@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -149,7 +150,10 @@ if predict_button:
         if hasattr(processed_data, "toarray"):
             processed_data = processed_data.toarray()
 
-        processed_data = np.asarray(processed_data, dtype=np.float32)
+        processed_data = np.asarray(
+            processed_data,
+            dtype=np.float32
+        )
 
         prediction_probability = model.predict(
             processed_data,
@@ -164,14 +168,14 @@ if predict_button:
             np.array([predicted_class])
         )[0]
 
+        prediction_label = str(prediction_label).strip()
+
         st.subheader("Prediction Result")
 
-      prediction_label = str(prediction_label).strip()
-
-if prediction_label == "Approved":
-    st.success(f"Prediction: {prediction_label}")
-else:
-    st.warning(f"Prediction: {prediction_label}")
+        if prediction_label == "Approved":
+            st.success(f"Prediction: {prediction_label}")
+        else:
+            st.warning(f"Prediction: {prediction_label}")
 
         st.write(
             f"Model output probability: {prediction_probability:.4f}"
