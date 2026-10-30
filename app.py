@@ -62,8 +62,9 @@ with st.form("loan_prediction_form"):
         )
 
         self_employed = st.selectbox(
-            "Self Employed",
-            ["Yes", "No"]
+           "Self Employed",
+            [" Yes", " No"],
+        format_func=lambda x: x.strip()
         )
 
         income_annum = st.number_input(
