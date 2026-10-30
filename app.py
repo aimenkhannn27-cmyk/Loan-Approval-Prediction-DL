@@ -56,8 +56,9 @@ with st.form("loan_prediction_form"):
         )
 
         education = st.selectbox(
-            "Education",
-            ["Graduate", "Not Graduate"]
+           "Education",
+           [" Graduate", " Not Graduate"],
+        format_func=lambda x: x.strip()
         )
 
         self_employed = st.selectbox(
