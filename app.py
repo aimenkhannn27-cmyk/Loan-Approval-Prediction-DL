@@ -166,10 +166,12 @@ if predict_button:
 
         st.subheader("Prediction Result")
 
-        if str(prediction_label).lower() in ["approved", "1"]:
-            st.success(f"Prediction: {prediction_label}")
-        else:
-            st.warning(f"Prediction: {prediction_label}")
+      prediction_label = str(prediction_label).strip()
+
+if prediction_label == "Approved":
+    st.success(f"Prediction: {prediction_label}")
+else:
+    st.warning(f"Prediction: {prediction_label}")
 
         st.write(
             f"Model output probability: {prediction_probability:.4f}"
